@@ -1,23 +1,23 @@
 class Solution {
 public:
-    int totalNumbers(std::vector<int>& digits) {
-        std::unordered_set<int> uniqueNumbers;
-        int n = digits.size();
+    int totalNumbers(vector<int>& digits) {
+        unordered_set<int> res;
         
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                for (int k = 0; k < n; k++) {
-                    if (i != j && i != k && j != k) {
-                        if (digits[i] != 0) { // First digit should not be zero
-                            if (digits[k] % 2 == 0) { // Last digit should be even
-                                int number = digits[i] * 100 + digits[j] * 10 + digits[k];
-                                uniqueNumbers.insert(number);
+        for(int i=0; i<digits.size(); i++){
+            for(int j=0; j<digits.size(); j++){
+                for(int k=0; k<digits.size(); k++){
+                    if(i!=j && i!=k && j!=k){
+                        if(digits[i] != 0){
+                            if(digits[k]%2 == 0){
+                                int num = digits[i]*100 + digits[j]*10 + digits[k];
+                                res.insert(num);
                             }
                         }
                     }
                 }
             }
         }
-        return uniqueNumbers.size();
+
+    return res.size();
     }
 };
